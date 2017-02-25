@@ -13,8 +13,14 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('chat-messages', require('./components/ChatMessages.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        messages: []
+    },
+    created() {
+        this.messages = [{"message":"gogo","user":{"name":"bien","email":"bien@uitox.com"}}];
+    }
 });

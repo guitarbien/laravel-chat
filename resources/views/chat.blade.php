@@ -9,9 +9,9 @@
                 <div class="panel-heading">Chats</div>
 
                 <div class="panel-body">
-                    <!-- <chat-messages :messages="messages"></chat-messages> -->
-                    訊息顯示在這
+                    <chat-messages :messages="messages"></chat-messages>
                 </div>
+
                 <div class="panel-footer">
                     訊息顯示在送出
                 </div>

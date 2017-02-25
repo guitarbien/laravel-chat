@@ -21,6 +21,13 @@ const app = new Vue({
         messages: []
     },
     created() {
-        this.messages = [{"message":"gogo","user":{"name":"bien","email":"bien@uitox.com"}}];
+        this.fetchMessages();
+    },
+    methods: {
+        fetchMessages() {
+            axios.get('/messages').then(response => {
+                this.messages = response.data;
+            });
+        }
     }
 });

@@ -11259,15 +11259,25 @@ var app = new Vue({
         messages: []
     },
     created: function created() {
+        var _this = this;
+
         this.fetchMessages();
+
+        // subscribe to the chat channel
+        Echo.private('chat').listen('MessageSent', function (e) {
+            _this.messages.push({
+                message: e.message.message,
+                user: e.user
+            });
+        });
     },
 
     methods: {
         fetchMessages: function fetchMessages() {
-            var _this = this;
+            var _this2 = this;
 
             axios.get('/messages').then(function (response) {
-                _this.messages = response.data;
+                _this2.messages = response.data;
             });
         },
         addMessage: function addMessage(message) {

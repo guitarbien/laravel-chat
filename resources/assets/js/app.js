@@ -23,6 +23,14 @@ const app = new Vue({
     },
     created() {
         this.fetchMessages();
+
+        // subscribe to the chat channel
+        Echo.private('chat').listen('MessageSent', (e) => {
+            this.messages.push({
+                message: e.message.message,
+                user: e.user
+            });
+        });
     },
     methods: {
         fetchMessages() {

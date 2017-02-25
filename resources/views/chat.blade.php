@@ -13,8 +13,12 @@
                 </div>
 
                 <div class="panel-footer">
-                    訊息顯示在送出
+                    <chat-form
+                        v-on:messagesent="addMessage"
+                        :user="{{ Auth::user() }}"
+                    ></chat-form>
                 </div>
+
             </div>
         </div>
     </div>
